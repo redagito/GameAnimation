@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 
+#include <glm/gtc/type_ptr.hpp>
+
 GLuint Shader::s_activeShaderId = 0;
 
 Shader::Shader(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath)
@@ -56,7 +58,7 @@ GLint Shader::getAttributeLocation(const std::string& name) const
 	return location;
 }
 
-GLuint Shader::getUniformLocation(const std::string& name) const
+GLint Shader::getUniformLocation(const std::string& name) const
 {
 	// Check cache
 	auto iter = m_uniforms.find(name);
@@ -121,4 +123,56 @@ void Shader::linkShaders(GLuint vertexShaderId, GLuint fragmentShaderId)
 	glGetProgramInfoLog(m_shaderId, sizeof(infoLog), nullptr, infoLog);
 	glDeleteProgram(m_shaderId);
 	throw std::runtime_error("Failed to link shader: " + std::string(infoLog));
+}
+
+// Uniforms
+
+void Shader::set(GLint location, const float* arrVal, unsigned int length)
+{
+	glProgramUniform1fv(m_shaderId, location, length, arrVal);
+}
+
+void Shader::set(GLint location, const glm::vec2* arrVal, unsigned int length)
+{
+	glProgramUniform2fv(m_shaderId, location, length, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const glm::vec3* arrVal, unsigned int length)
+{
+	glProgramUniform3fv(m_shaderId, location, length, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const glm::vec4* arrVal, unsigned int length)
+{
+	glProgramUniform4fv(m_shaderId, location, length, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const glm::mat4* arrVal, unsigned int length)
+{
+	glProgramUniformMatrix4fv(m_shaderId, location, length, false, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const glm::quat* arrVal, unsigned int length)
+{
+	glProgramUniform4fv(m_shaderId, location, length, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const int* arrVal, unsigned int length)
+{
+	glProgramUniform1iv(m_shaderId, location, length, arrVal);
+}
+
+void Shader::set(GLint location, const glm::ivec2* arrVal, unsigned int length)
+{
+	glProgramUniform2iv(m_shaderId, location, length, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const glm::ivec3* arrVal, unsigned int length)
+{
+	glProgramUniform3iv(m_shaderId, location, length, glm::value_ptr(*arrVal));
+}
+
+void Shader::set(GLint location, const glm::ivec4* arrVal, unsigned int length)
+{
+	glProgramUniform4iv(m_shaderId, location, length, glm::value_ptr(*arrVal));
 }

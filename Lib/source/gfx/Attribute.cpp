@@ -37,12 +37,8 @@ unsigned int Attribute<T>::getCount() const
 template <typename T>
 void Attribute<T>::set(const T* dataArray, unsigned int length)
 {
+	glNamedBufferData(m_id, length * sizeof(T), dataArray, GL_STREAM_DRAW);
 	m_count = length;
-	auto size = sizeof(T);
-
-	glBindBuffer(GL_ARRAY_BUFFER, m_id);
-	glBufferData(GL_ARRAY_BUFFER, size * m_count, dataArray, GL_STREAM_DRAW);
-	glBindBuffer(0);
 }
 
 template <typename T>
