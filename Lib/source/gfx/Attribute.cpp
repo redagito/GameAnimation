@@ -59,22 +59,22 @@ void Attribute<glm::ivec4>::setAttribPointer(GLuint slot)
 
 void Attribute<float>::setAttribPointer(GLuint slot)
 {
-	glVertexAttribIPointer(slot, 1, GL_FLOAT, 0, nullptr);
+	glVertexAttribPointer(slot, 1, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
 void Attribute<glm::vec2>::setAttribPointer(GLuint slot)
 {
-	glVertexAttribIPointer(slot, 2, GL_FLOAT, 0, nullptr);
+	glVertexAttribPointer(slot, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
 void Attribute<glm::vec3>::setAttribPointer(GLuint slot)
 {
-	glVertexAttribIPointer(slot, 3, GL_FLOAT, 0, nullptr);
+	glVertexAttribPointer(slot, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
 void Attribute<glm::vec4>::setAttribPointer(GLuint slot)
 {
-	glVertexAttribIPointer(slot, 4, GL_FLOAT, 0, nullptr);
+	glVertexAttribPointer(slot, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
 }
 
 template <typename T>

@@ -17,8 +17,9 @@ Transform combine(const Transform& a, const Transform& b);
 Transform inverse(const Transform& a);
 Transform mix(const Transform& a, const Transform& b, float t);
 glm::mat4 toMat4(const Transform& t);
+
 // Matrix with rotation, translation and scale information (model matrix) to transform
-// Assumes the matrix does NOT conatin skew or perspective information
+// Assumes the matrix does NOT contain skew or perspective information
 Transform toTransform(const glm::mat4& m);
 glm::vec3 transformPoint(const Transform& t, const glm::vec3& point);
 glm::vec3 transformVector(const Transform& t, const glm::vec3& vec);
