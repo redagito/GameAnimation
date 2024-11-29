@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 
+// Cubic Bezier spline
 template<typename T>
 struct Bezier
 {

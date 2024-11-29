@@ -7,10 +7,25 @@
 #include "anim/Frame.h"
 #include "anim/Interpolation.h"
 
-template<typename T, unsigned int N>
+// Collection of frames
+// Must have at least 2 frames for interpolation
+template<typename T, size_t N>
 class Track
 {
 public:
+	Track() = default;
+
+	void setSize(size_t size);
+	size_t getSize() const;
+
+	Interpolation getInterpolation() const;
+	void setInterpolation(Interpolation interpolation);
+
+	float getStartTime() const;
+	float getEndTime() const;
+
+	// Sample the track at time
+	T sample(float time, bool looping);
 
 protected:
 	std::vector<Frame<N>> m_frames;

@@ -14,5 +14,5 @@ protected:
 	std::string m_name;
 	float m_startTime = 0.f;
 	float m_endTime = 0.f;
-	bool m_looping;
+	bool m_looping = false;
 };

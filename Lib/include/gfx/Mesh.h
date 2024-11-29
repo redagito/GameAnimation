@@ -14,5 +14,5 @@ protected:
 	std::vector<glm::vec2> m_texCoords;
 	std::vector<glm::vec4> m_weights;
 	std::vector<glm::ivec4> m_influences;
-	std::vector<unsigned int> m_indices;
+	std::vector<size_t> m_indices;
 };

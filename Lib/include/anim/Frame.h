@@ -1,13 +1,16 @@
 #pragma once
 
+#include <array>
+
 // Stores keyframes in an animation track
-template<unsigned int N>
+template<size_t N>
 struct Frame
 {
-	float value[N];
-	float in[N];
-	float out[N];
-	float time[N];
+	std::array<float, N> time;
+	std::array<float, N> value;
+	// Tangents
+	std::array<float, N> in;
+	std::array<float, N> out;
 };
 
 using ScalarFrame = Frame<1>;

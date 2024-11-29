@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 
+// For rendering indexed geometry
 class IndexBuffer
 {
 public:
